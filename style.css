@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+  background-color: #2e8b57;
+  font-family: 'League Gothic', sans-serif;
+}
+
+.main {
+  position: relative;
+  background-image: radial-gradient(
+    farthest-corner at 40px 40px,
+    #228b22 60%,
+    rgba(34, 139, 80, 0.5)
+  );
+
+  min-height: calc(100vh - 60px);
+  margin: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  color: black;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+}
+
+.main > h2 {
+  display: flex;
+  justify-content: center;
+  color: black;
+}
+
+.main > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 350px) {
+  .home_container {
+    justify-content: unset;
+  }
+}
+
+.paletteList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px 50px;
+}
+
+@media (max-width: 1220px) {
+  .paletteList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.paletteCardItem,
+.paletteListItem {
+  font-family: 'League Gothic', sans-serif;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 3em;
+  width: 20rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (max-width: 400px) {
+  .paletteCardItem,
+  .paletteListItem {
+    width: 210px;
+    height: 180px;
+  }
+}
+
+.paletteCardItem > div,
+.paletteListItem > div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.paletteCardItem_flavor,
+.paletteListItem_flavor {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 80%;
+}
+
+.paletteCardItem_description,
+.paletteListItem_description {
+  font-size: 1em;
+}
+
+.paletteCardItem_price,
+.paletteListItem_price{
+  color: darkviolet;
+}
+
+.paletteListItem_photo{
+  height: 13rem;
+  margin-right: -6em;
+}
