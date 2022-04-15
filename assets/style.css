@@ -11,29 +11,28 @@ html {
   font-family: 'League Gothic', sans-serif;
 }
 
-.main {
+.home {
   position: relative;
   background-image: radial-gradient(
     farthest-corner at 40px 40px,
     #228b22 60%,
     rgba(34, 139, 80, 0.5)
   );
-
   min-height: calc(100vh - 60px);
-  margin: 20px;
-  padding: 10px;
+  margin: 20px; 
+  padding: 2px;
   border-radius: 20px;
   color: black;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
 }
 
-.main > h2 {
+.home > h2 {
   display: flex;
   justify-content: center;
   color: black;
 }
 
-.main > div {
+.home > div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,6 +53,12 @@ html {
 @media (max-width: 1220px) {
   .paletteList {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 840px) {
+  .paletteList {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -87,7 +92,7 @@ html {
 .paletteListItem_flavor {
   font-size: 1.5rem;
   font-weight: 500;
-  line-height: 80%;
+  line-height: 100%;
 }
 
 .paletteCardItem_description,
@@ -102,5 +107,5 @@ html {
 
 .paletteListItem_photo{
   height: 13rem;
-  margin-right: -6em;
+  margin-right: -9em;
 }
