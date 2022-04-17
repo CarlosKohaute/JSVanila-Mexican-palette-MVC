@@ -9,21 +9,46 @@
   </head>
   <body>
     <section class="home">
-      <h2>Paletas disponíveis:</h2>
-      <div class="home_container">
-        <div class="paletteListItem">
-          <div>
-            <div class="paletteListItem_flavor">Açai com Leite condensado</div>
-            <div class="paletteListItem_price">R$ 10,00</div>
-            <div class="paletteListItem_description">
-              Paleta de Açai com Leite Condensado
+      <div class="home_header Header">
+        <div class="row">
+          <div class="header_logo logo">
+            <img
+              src="./assets/images/logo.svg"
+              width="70px"
+              alt="Logo Mexican Palette"
+              class="logo_icon"
+            />
+            <span class="tittle_logo">Mexican Pallete</span>
+          </div>
+          <div class="header_options options">
+            <div class="options_bag bag">
+              <img
+                src="./assets/icons/sacola.svg"
+                width="40px"
+                class="bag_icon"
+                alt="Buy Bag"
+              />
             </div>
           </div>
-          <img class="paletteListItem_photo"
-            src="./assets/images/acai-com-leite-condensado.png"
-            alt="Paleta de Açai com Leite Condensado"
-          />
         </div>
+      </div>
+      <h2>Paleta escolhida:</h2>
+      <div class="chosed_palette-space">
+        <div id="chosed_palette-space-input">
+          <input
+            type="number"
+            id="idPalette"
+            placeholder=" Digite o ID da paleta e clique em 'Escolher.' "
+          />
+          <button id="idPaletteButton" onclick="findByIdPalettes()">
+            Escolher
+          </button>
+        </div>
+        <div id="chosedpalette"></div>
+      </div>
+      <h2>Paletas disponíveis:</h2>
+      <div class="home_container">
+        <div class="paletteList" id="paletteList"></div>
       </div>
     </section>
     <script src="./assets/script.js"></script>
