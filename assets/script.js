@@ -14,11 +14,17 @@ async function findAllPalettes() {
             <div class="paletteListItem_flavor">${palette.flavor}</div>
             <div class="paletteListItem_price">R$ ${palette.price}</div>
             <div class="paletteListItem_description">${palette.description}  </div>
+            <div class="paletteListItem_actions Actions">
+            <button class="Actions_edit btn">Editar</button>
+            <button class="Actions_delete btn">Apagar</button>
+            </div>
       </div>
       <img class="paletteListItem_photo"
         src="${palette.photo}"
         alt="${palette.flavor}"
       />
+
+
     </div>
       `,
     );
@@ -54,10 +60,10 @@ function openModalRegister() {
 function closeModalRegister() {
   document.querySelector('.modal-overlay').style.display = 'none';
 
-  document.querySelector('#flavor').value = "";
+  document.querySelector('#flavor').value = '';
   document.querySelector('#price').value = 0;
-  document.querySelector('#description').value = "";
-  document.querySelector('#photo').value = "";
+  document.querySelector('#description').value = '';
+  document.querySelector('#photo').value = '';
 }
 
 async function registerPalette() {

@@ -103,12 +103,13 @@ html {
 
 .paletteCardItem_description,
 .paletteListItem_description {
-  font-size: 1em;
+  font-size: 1.3em;
 }
 
 .paletteCardItem_price,
 .paletteListItem_price {
   color: darkviolet;
+  font-size: 1.7rem;
 }
 
 .paletteListItem_photo {
@@ -130,7 +131,7 @@ html {
   border-radius: 0.8rem;
 }
 
-.default-button{
+.default-button {
   background-color: transparent;
   border: 1px solid #9400d3;
   padding: 0.5em;
@@ -241,7 +242,7 @@ html {
   }
 }
 
-.modal-overlay{
+.modal-overlay {
   background-color: #11111150;
   width: 100vw;
   height: 100vh;
@@ -335,7 +336,49 @@ textarea {
   color: white;
 }
 
-.create-button-modal{
+.create-button-modal {
   display: flex;
   justify-content: flex-end;
+}
+
+.Actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.btn {
+  margin-right: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  max-width: 280px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 48%;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.Actions_edit {
+  color: #003cff;
+   border: solid 1px #003cff;
+   background-color: transparent;
+}
+
+.Actions_edit:hover{
+  color: white;
+  background-color:#003cff ;
+}
+
+.Actions_delete {
+  color: #ff0000;
+  border: solid 1px #ff0000;
+  background-color: transparent;
+}
+
+.Actions_delete:hover{
+  color: white;
+  background-color:#ff0000 ;
 }
