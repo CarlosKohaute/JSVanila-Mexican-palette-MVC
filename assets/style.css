@@ -363,13 +363,13 @@ textarea {
 
 .Actions_edit {
   color: #003cff;
-   border: solid 1px #003cff;
-   background-color: transparent;
+  border: solid 1px #003cff;
+  background-color: transparent;
 }
 
-.Actions_edit:hover{
+.Actions_edit:hover {
   color: white;
-  background-color:#003cff ;
+  background-color: #003cff;
 }
 
 .Actions_delete {
@@ -378,7 +378,77 @@ textarea {
   background-color: transparent;
 }
 
-.Actions_delete:hover{
+.Actions_delete:hover {
   color: white;
-  background-color:#ff0000 ;
+  background-color: #ff0000;
+}
+
+.modal-body-header{
+  border-radius: 50px;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  background-image: radial-gradient(
+    farthest-corner at 40px 40px,
+    #228b22 60%,
+    rgba(34, 139, 80, 0.5)
+  );
+  padding: 1rem;
+}
+
+.modal-body-delete {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  width: 95.5%;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  outline: none;
+  border: solid 2px #ccc;
+  margin-bottom: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.modal-body-delete p {
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.btns_delete {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.btn_delete{
+  background-color: transparent;
+  padding: .5rem;
+  font-size: 1.2rem;
+  border-radius: .5rem;
+  width: 30%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn_delete_no{
+  color: #ff0000;
+  border: 1px solid  #ff0000;
+}
+
+.btn_delete_no:hover{
+  background-color: #ff0000;
+  color: white;
+}
+
+.btn_delete_yes{
+  color: #00b309;
+  border: 1px solid  #00b309;
+}
+
+
+.btn_delete_yes:hover{
+  background-color: #00b309;
+  color: white;
 }

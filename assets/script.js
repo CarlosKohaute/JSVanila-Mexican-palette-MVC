@@ -16,7 +16,7 @@ async function findAllPalettes() {
             <div class="paletteListItem_description">${palette.description}  </div>
             <div class="paletteListItem_actions Actions">
             <button class="Actions_edit btn" onclick="openModal('${palette.id}')">Editar</button>
-            <button class="Actions_delete btn">Apagar</button>
+            <button class="Actions_delete btn" onclick="openModalDelete('${palette.id}')">Apagar</button>
             </div>
       </div>
       <img class="paletteListItem_photo"
@@ -47,7 +47,7 @@ async function findByIdPalettes() {
 
     <div class="paletteListItem_actions Actions">
     <button class="Actions_edit btn" onclick="openModal(${palette._id})">Editar</button>
-    <button class="Actions_delete btn">Apagar</button>
+    <button class="Actions_delete btn" openModalDelete(${palette.id})">Apagar</button>
     </div>
 </div>
 <img class="paletteCardItem_photo"
@@ -78,10 +78,10 @@ async function openModal(id = null) {
       'Cadastrar uma Paleta';
     document.querySelector('#button-form-modal').innerText = 'Cadastrar';
   }
-  document.querySelector('.modal-overlay').style.display = 'flex';
+  document.querySelector('#overlay').style.display = 'flex';
 }
 
-function closeModalRegister() {
+function closeModal() {
   document.querySelector('.modal-overlay').style.display = 'none';
 
   document.querySelector('#flavor').value = '';
@@ -129,7 +129,7 @@ async function registerPalette() {
 
   <div class="paletteListItem_actions Actions">
   <button class="Actions_edit btn" onclick="openModal(${palette._id})">Editar</button>
-  <button class="Actions_delete btn">Apagar</button>
+  <button class="Actions_delete btn" openModalDelete(${palette.id})">Apagar</button>
   </div>
 </div>
 <img class="paletteCardItem_photo"
@@ -145,5 +145,37 @@ alt="${newPalette.flavor}"
       .querySelector('#paletteList')
       .insertAdjacentHTML('beforeend', html);
   }
-  closeModalRegister();
+  closeModal();
+}
+
+function openModalDelete(id) {
+  document.querySelector('#overlay-delete').style.display = 'flex';
+
+  const btnYes = document.querySelector('.btn_delete_yes');
+
+  btnYes.addEventListener('click', function () {
+    deletePalette(id);
+  });
+}
+
+function closeModalDelete() {
+  document.querySelector('#overlay-delete').style.display = 'none';
+}
+
+async function deletePalette(id) {
+  const response = await fetch(`${baseURL}/delete/${id}`, {
+    method: 'delete',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    mode: 'cors',
+  });
+
+  const result = await response.json();
+  alert(result.message);
+
+document.getElementById("paletteList").inneHTML = ""
+
+closeModalDelete();
+  findAllPalettes();
 }

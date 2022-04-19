@@ -39,7 +39,7 @@
         <div class="card-modal">
           <div class="modal-header">
             <h2 id="tittle-header-modal">Cadastrar nova Paleta</h2>
-            <a onclick="closeModalRegister()"
+            <a onclick="closeModal()"
             class="close-modal">X</a>
           </div>
           <div class="modal-body">
@@ -51,6 +51,22 @@
             <input type="text" name="photo" id="photo" placeholder="Link da foto da Paleta">
             <button id="button-form-modal" onclick="registerPalette()">Cadastrar</button>
           </div>
+        </div>
+      </section>
+      <section class="modal-overlay"  id="overlay-delete">
+          <div class="modal"> 
+            <div class="modal-header">
+            <h2 id="tittle-header-modal">Confirmação de deleção</h2>
+            <a onclick="closeModalDelete()"
+            class="close-modal">X</a>
+          </div>
+        <div class="modal-body-delete">
+          <p>Deseja realmente apagar essa paleta?</p>
+          <div class="btns_delete">
+            <button class="btn_delete_no btn_delete" onclick="closeModalDelete()">Não!</button>
+            <button class="btn_delete_yes btn_delete" >Sim!</button>
+          </div>
+        </div>
         </div>
       </section>
       <h2>Paleta escolhida:</h2>
