@@ -48,9 +48,54 @@ alt="${palette.flavor}"
 findAllPalettes();
 
 function openModalRegister() {
-  document.querySelector(".modal-overlay").style.display = "flex";
+  document.querySelector('.modal-overlay').style.display = 'flex';
 }
 
 function closeModalRegister() {
-  document.querySelector(".modal-overlay").style.display = "none";
+  document.querySelector('.modal-overlay').style.display = 'none';
+
+  document.querySelector('#flavor').value = "";
+  document.querySelector('#price').value = 0;
+  document.querySelector('#description').value = "";
+  document.querySelector('#photo').value = "";
+}
+
+async function registerPalette() {
+  const flavor = document.querySelector('#flavor').value;
+  const price = document.querySelector('#price').value;
+  const description = document.querySelector('#description').value;
+  const photo = document.querySelector('#photo').value;
+
+  const palette = {
+    flavor,
+    price,
+    description,
+    photo,
+  };
+
+  const response = await fetch(`${baseURL}/create`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    node: 'cors',
+    body: JSON.stringify(palette),
+  });
+  const newPalette = await response.json();
+
+  const html = `
+<div class="paletteCardItem">
+<div>
+  <div class="paletteCardItem_flavor">${newPalette.flavor}</div>
+  <div class="paletteCardItem_price">R$ ${newPalette.price}</div>
+  <div class="paletteCardItem_description">${newPalette.description}  </div>
+</div>
+<img class="paletteCardItem_photo"
+src="${newPalette.photo}"
+alt="${newPalette.flavor}"
+/>
+</div>`;
+  document.querySelector('#paletteList').insertAdjacentHTML('beforeend', html);
+
+  closeModalRegister();
 }

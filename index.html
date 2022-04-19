@@ -33,7 +33,7 @@
         </div>
       </div>
       <section class="create-button-modal">
-        <button type="button" onclick="openModalRegister()">Cadastrar nova Paleta</button>
+        <button type="button" class="default-button" onclick="openModalRegister()">Cadastrar nova Paleta</button>
       </section>
       <section class="modal-overlay" id="overlay">
         <div class="card-modal">
@@ -43,13 +43,13 @@
             class="close-modal">X</a>
           </div>
           <div class="modal-body">
-          <form action="" >
+          <div>
             <input type="text" name="flavor" id="flavor" placeholder="Sabor da Paleta">
-            <input type="text" name="price" id="price" placeholder="Preço da Paleta">
+            <input type="number" name="price" id="price" placeholder="Preço da Paleta">
             <textarea  type="text" name="description" id="description" placeholder='Descrição da Paleta' rows="3" > </textarea>
             <input type="text" name="photo" id="photo" placeholder="Link da foto da Paleta">
-            <button type="submit">Cadastrar</button>
-          </form>
+            <button onclick="registerPalette()">Cadastrar</button>
+          </div>
         </div>
       </section>
       <h2>Paleta escolhida:</h2>
@@ -60,7 +60,7 @@
             id="idPalette"
             placeholder=" Digite o ID da paleta e clique em 'Escolher.' "
           />
-          <button id="idPaletteButton" onclick="findByIdPalettes()">
+          <button class="default-button" onclick="findByIdPalettes()">
             Escolher
           </button>
         </div>

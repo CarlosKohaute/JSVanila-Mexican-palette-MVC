@@ -130,7 +130,7 @@ html {
   border-radius: 0.8rem;
 }
 
-#idPaletteButton {
+.default-button{
   background-color: transparent;
   border: 1px solid #9400d3;
   padding: 0.5em;
@@ -143,7 +143,7 @@ html {
   transition: all 0.3s ease-in-out;
   font-size: 1rem;
 }
-#idPaletteButton:hover {
+.default-button:hover {
   background-color: #9400d3;
   color: #2e8b57;
 }
@@ -299,14 +299,14 @@ html {
 .modal-body {
   padding: 0.5rem 1rem;
 }
-.modal-body form {
+.modal-body div {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.modal-body form input,
+.modal-body div input,
 textarea {
   width: 100%;
   padding: 0.5rem;
@@ -317,7 +317,7 @@ textarea {
   border-radius: 0.5rem;
 }
 
-.modal-body button {
+.modal-body div button {
   padding: 0.6rem;
   width: 30%;
   font-size: 1rem;
@@ -333,4 +333,9 @@ textarea {
 .modal-body button:hover {
   background-color: rgba(34, 139, 80, 0.5);
   color: white;
+}
+
+.create-button-modal{
+  display: flex;
+  justify-content: flex-end;
 }
