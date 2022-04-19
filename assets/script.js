@@ -166,7 +166,7 @@ async function deletePalette(id) {
   const response = await fetch(`${baseURL}/delete/${id}`, {
     method: 'delete',
     headers: {
-      'Content-type': 'application/json',
+      'Content-Type': 'application/json',
     },
     mode: 'cors',
   });
@@ -174,8 +174,8 @@ async function deletePalette(id) {
   const result = await response.json();
   alert(result.message);
 
-document.getElementById("paletteList").inneHTML = ""
+  document.getElementById('paletteList').inneHTML = '';
 
-closeModalDelete();
+  closeModalDelete();
   findAllPalettes();
 }
