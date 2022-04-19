@@ -46,3 +46,11 @@ alt="${palette.flavor}"
 </div>`;
 }
 findAllPalettes();
+
+function openModalRegister() {
+  document.querySelector(".modal-overlay").style.display = "flex";
+}
+
+function closeModalRegister() {
+  document.querySelector(".modal-overlay").style.display = "none";
+}
