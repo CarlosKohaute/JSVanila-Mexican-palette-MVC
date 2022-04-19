@@ -9,13 +9,13 @@ async function findAllPalettes() {
     document.querySelector('#paletteList').insertAdjacentHTML(
       'beforeend',
       `
-      <div class="paletteListItem">
+      <div class="paletteListItem" id ="paletteListItem_${palette.id}">
           <div>
             <div class="paletteListItem_flavor">${palette.flavor}</div>
             <div class="paletteListItem_price">R$ ${palette.price}</div>
             <div class="paletteListItem_description">${palette.description}  </div>
             <div class="paletteListItem_actions Actions">
-            <button class="Actions_edit btn" onclick="openModal(${palette.id})">Editar</button>
+            <button class="Actions_edit btn" onclick="openModal('${palette.id}')">Editar</button>
             <button class="Actions_delete btn">Apagar</button>
             </div>
       </div>
@@ -39,11 +39,16 @@ async function findByIdPalettes() {
   const chosedpaletteDiv = document.querySelector('#chosedpalette');
 
   chosedpaletteDiv.innerHTML = `
-  <div class="paletteCardItem">
+  <div class="paletteCardItem" id ="paletteListItem_${palette.id}">
   <div>
     <div class="paletteCardItem_flavor">${palette.flavor}</div>
     <div class="paletteCardItem_price">R$ ${palette.price}</div>
     <div class="paletteCardItem_description">${palette.description}  </div>
+
+    <div class="paletteListItem_actions Actions">
+    <button class="Actions_edit btn" onclick="openModal(${palette._id})">Editar</button>
+    <button class="Actions_delete btn">Apagar</button>
+    </div>
 </div>
 <img class="paletteCardItem_photo"
 src="${palette.photo}"
@@ -58,24 +63,20 @@ async function openModal(id = null) {
     document.querySelector('#tittle-header-modal').innerText =
       'Atualizar uma Paleta';
 
-      document.querySelector('#button-form-modal').innerText =
-      "Atualizar"
-
+    document.querySelector('#button-form-modal').innerText = 'Atualizar';
 
     const response = await fetch(`${baseURL}/find-palettes/${id}`);
     const palette = await response.json();
 
     document.querySelector('#flavor').value = palette.flavor;
-    document.querySelector('#price').value = palette.prince;
+    document.querySelector('#price').value = palette.price;
     document.querySelector('#description').value = palette.description;
     document.querySelector('#photo').value = palette.photo;
     document.querySelector('#id').value = palette.id;
-
   } else {
     document.querySelector('#tittle-header-modal').innerText =
       'Cadastrar uma Paleta';
-      document.querySelector('#button-form-modal').innerText =
-      "Cadastrar"
+    document.querySelector('#button-form-modal').innerText = 'Cadastrar';
   }
   document.querySelector('.modal-overlay').style.display = 'flex';
 }
@@ -106,10 +107,11 @@ async function registerPalette() {
 
   const editionModeAtivated = id > 0;
 
-  const endpoint = baseURL + (editionModeAtivated ? `/update/${id}` : `/create`)
+  const endpoint =
+    baseURL + (editionModeAtivated ? `/update/${id}` : `/create`);
 
   const response = await fetch(endpoint, {
-    method: 'post',
+    method: editionModeAtivated ? 'put' : 'post',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -119,18 +121,29 @@ async function registerPalette() {
   const newPalette = await response.json();
 
   const html = `
-<div class="paletteCardItem">
+<div class="paletteCardItem" id ="paletteListItem_${palette.id}">
 <div>
   <div class="paletteCardItem_flavor">${newPalette.flavor}</div>
   <div class="paletteCardItem_price">R$ ${newPalette.price}</div>
   <div class="paletteCardItem_description">${newPalette.description}  </div>
+
+  <div class="paletteListItem_actions Actions">
+  <button class="Actions_edit btn" onclick="openModal(${palette._id})">Editar</button>
+  <button class="Actions_delete btn">Apagar</button>
+  </div>
 </div>
 <img class="paletteCardItem_photo"
 src="${newPalette.photo}"
 alt="${newPalette.flavor}"
 />
 </div>`;
-  document.querySelector('#paletteList').insertAdjacentHTML('beforeend', html);
 
+  if (editionModeAtivated) {
+    document.querySelector(`#paletteListItem_${id}`).outerHTML = html;
+  } else {
+    document
+      .querySelector('#paletteList')
+      .insertAdjacentHTML('beforeend', html);
+  }
   closeModalRegister();
 }
