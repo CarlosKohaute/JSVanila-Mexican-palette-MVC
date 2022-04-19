@@ -174,7 +174,7 @@ async function deletePalette(id) {
   const result = await response.json();
   alert(result.message);
 
-  document.getElementById('paletteList').inneHTML = '';
+  document.getElementById('paletteList').innerHTML = '';
 
   closeModalDelete();
   findAllPalettes();
