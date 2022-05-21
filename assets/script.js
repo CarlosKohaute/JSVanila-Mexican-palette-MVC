@@ -146,6 +146,7 @@ alt="${newPalette.flavor}"
       .insertAdjacentHTML('beforeend', html);
   }
   closeModal();
+  location. reload()
 }
 
 function openModalDelete(id) {
